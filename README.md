@@ -1,10 +1,14 @@
 ### 引入依赖
+```
 <dependency>
   <groupId>com.alidaodao.app</groupId>
   <artifactId>alidaodao-app-redis</artifactId>
   <version>{maven仓库中最新版本即可}</version>
 </dependency>
+```
+
 ### 初始化对象
+
 ```
 @Configuration
 public class RedisConfiguration {
@@ -36,13 +40,15 @@ public class RedisConfiguration {
     }
 }
 ```
-### 使用helper
+
+### 使用RedisClient
+
 ```
     @Autowired
     private RedisClient redisClient;
      //使用默认的db相关方法
     //String data = redisClient.getByDefault().get(redisKey);
     //get指定db相关方法
-    //String data = redisHelper.get(index).get(redisKey);
+    //String data = redisClient.get(index).get(redisKey);
 ```
 到此结束
