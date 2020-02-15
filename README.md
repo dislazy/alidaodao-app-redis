@@ -23,7 +23,7 @@ public class RedisConfiguration {
     @Value(value = "${spring.redis.indexes}")
     private String indexes;
     //默认db
-    @NacosValue(value = "${spring.redis.default.index}")
+    @Value(value = "${spring.redis.default.index}")
     private int defaultIndex;
 
     @Bean("redisClient")
