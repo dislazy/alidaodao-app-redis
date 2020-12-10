@@ -126,16 +126,18 @@ public class RedisCache implements RedisService {
 
     @Override
     public String set(String key, String value, Expire exp) {
-        String ok = set(key, value);
-        expire(key, exp);
-        return ok;
+        if (exp == null) {
+            return "not ok";
+        }
+        return setex(key,exp.getTime(),value);
     }
 
     @Override
     public String set(byte[] key, byte[] value, Expire exp) {
-        String ok = set(key, value);
-        expire(key, exp);
-        return ok;
+        if (exp == null){
+            return "not ok";
+        }
+        return set(key, value, EXPX.SECONDS, (long) exp.getTime());
     }
 
     @Override
