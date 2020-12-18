@@ -1,3 +1,9 @@
+### 简单介绍
+alidaodao-app-redis是一款基于JedisPool的动态多redisDB自动获取实例，执行完命令自动释放的简单工具，旨在让redis的接入更简单更便捷。
+
+### 基本原理
+利用JedisPool的池化技术，将对应的链接封装到Map中，可以自由根据DB取用，执行对应的redis命令，执行完毕会自动释放链接回到连接池。
+
 ### 引入依赖
 ```
 <dependency>
