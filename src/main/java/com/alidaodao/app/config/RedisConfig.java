@@ -9,6 +9,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.StampedLock;
 
 
+/**
+ * @author Jack
+ */
 public class RedisConfig {
 
     private String host;

@@ -1,7 +1,17 @@
 package com.alidaodao.app.commons;
 
+/**
+ * @author Jack
+ * ex or px
+ */
 public enum  EXPX {
+    /**
+     * ex
+     */
     SECONDS("EX"),
+    /**
+     * px
+     */
     MILLISECONDS("PX");
 
     private String expx;

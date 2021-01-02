@@ -57,4 +57,8 @@ public class RedisConfiguration {
     //get指定db相关方法
     //String data = redisClient.get(index).get(redisKey);
 ```
+
+### 致谢
+感谢JetBrains提供的免费一年全家桶开源许可证： https://www.jetbrains.com/?from=alidaodao-app-redis
+
 到此结束

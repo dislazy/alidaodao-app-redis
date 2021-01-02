@@ -8,6 +8,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 
+/**
+ * @author Jack
+ * redis client
+ */
 public class RedisClient {
 
     //redis 多库map
