@@ -32,5 +32,6 @@ jobs:
        maven-repo-server-username: ${{secrets.SERVER_USERNAME}}
     # Maven server repository password
        maven-repo-server-password: ${{secrets.SERVER_PASSWORD}}
-    # The maven arguments for the release
-       maven-args: mvn clean deploy # optional, default is 
+    # The maven arguments for the releas
+    - name: eee
+      run: mvn clean -DskipTests=true deploy
