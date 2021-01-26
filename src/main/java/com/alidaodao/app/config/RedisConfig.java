@@ -22,7 +22,7 @@ public class RedisConfig {
 
     private int maxTotal = 1024;
 
-    private int maxIdle = 200;
+    private int maxIdle = 1024;
 
     private int maxWaitMillis = 2000;
 
