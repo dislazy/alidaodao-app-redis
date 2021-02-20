@@ -6,32 +6,22 @@ name: Maven Package
 on:
   release:
     types: [created]
-
 jobs:
-  build:
-
+  release:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Maven release
-      uses: qcastel/github-actions-maven-release@v1.0.3
-      with:
-    # Filter the branch to execute the release on
-       release-branch-name: master # optional
-    # Enable gpg signing
-       gpg-enabled: true # optional
-    # The GPG key ID
-       gpg-key-id: 18700AB8 # optional
-    # The GPG key
-       gpg-key: ${{secrets.PGP_PRI_KEY}} # optional
-    # The maven local repository path
-    # Maven server repository id to push the artefacts to
-       maven-repo-server-id: ${{secrets.SERVER_ID}}
-    # Maven server repository username
-       maven-repo-server-username: ${{secrets.SERVER_USERNAME}}
-    # Maven server repository password
-       maven-repo-server-password: ${{secrets.SERVER_PASSWORD}}
-    # The maven arguments for the releas
-    - name: eee
-      run: mvn clean -DskipTests=true deploy
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: Release Maven package
+        uses: samuelmeuli/action-maven-publish@v1
+        with:
+          gpg_private_key: ${{ secrets.PGP_PRI_KEY }}
+          server_id: ${{ secrets.SERVER_ID }}
+          nexus_username: ${{ secrets.SERVER_USERNAME }}
+          nexus_password: ${{ secrets.SERVER_PASSWORD }}
