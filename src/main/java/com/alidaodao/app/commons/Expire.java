@@ -1,7 +1,8 @@
 package com.alidaodao.app.commons;
 
 /**
- * 时间枚举
+ * @author Jack
+ * expire enum
  */
 public class Expire {
 

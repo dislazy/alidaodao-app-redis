@@ -4,11 +4,14 @@ import com.alidaodao.app.commons.EXPX;
 import com.alidaodao.app.commons.Expire;
 import redis.clients.jedis.ScanResult;
 import redis.clients.jedis.Tuple;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Jack
+ * reids service interface
+ */
 public interface RedisService {
 
     String set(String key, String value);

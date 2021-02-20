@@ -4,10 +4,14 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Protocol;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.StampedLock;
 
 
+/**
+ * @author Jack
+ */
 public class RedisConfig {
 
     private String host;
@@ -18,7 +22,7 @@ public class RedisConfig {
 
     private int maxTotal = 1024;
 
-    private int maxIdle = 200;
+    private int maxIdle = 1024;
 
     private int maxWaitMillis = 2000;
 
@@ -92,7 +96,7 @@ public class RedisConfig {
 
     private StampedLock lock = new StampedLock();
 
-    private HashMap<String, JedisPool> redisPoolMap = new HashMap<>();
+    private Map<String, JedisPool> redisPoolMap = new ConcurrentHashMap<>();
 
 
 
