@@ -59,6 +59,7 @@ public class RedisConfiguration {
 ```
 
 ### 致谢
-感谢JetBrains提供的免费一年全家桶开源许可证： https://www.jetbrains.com/?from=alidaodao-app-redis
+- 感谢 JetBrains 提供的免费开源 License：
+<img src="https://images.gitee.com/uploads/images/2020/0406/220236_f5275c90_5531506.png" alt="图片引用自lets-mica" style="float:left;">
 
 到此结束
