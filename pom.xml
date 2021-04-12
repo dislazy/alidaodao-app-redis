@@ -6,7 +6,7 @@
 
     <groupId>com.alidaodao.app</groupId>
     <artifactId>alidaodao-app-redis</artifactId>
-    <version>1.10.0</version>
+    <version>1.10.1</version>
     <packaging>jar</packaging>
 
     <name>alidaodao-app-redis</name>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>3.5.1</version>
+            <version>3.6.0-RC1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.11</version>
+            <version>3.12.0</version>
         </dependency>
     </dependencies>
 
