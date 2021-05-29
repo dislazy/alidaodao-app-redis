@@ -1,3 +1,8 @@
 /target/
 /.idea/
 /alidaodao-app-redis.iml
+/alidaodao-app-redis-client/target/
+/alidaodao-app-redis-example/target/
+/spring-boot-redis-starter/target/
+*.iml
+*.idea
