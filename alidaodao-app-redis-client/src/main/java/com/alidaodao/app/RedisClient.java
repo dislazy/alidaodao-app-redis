@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RedisClient {
 
     //redis 多库map
-    private Map<Integer, RedisService> map;
+    private final Map<Integer, RedisService> map;
 
     // 默认库索引
     private int defaultIndex = -1;
