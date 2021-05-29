@@ -4,6 +4,7 @@ import com.alidaodao.app.service.RedisService;
 import com.alidaodao.app.config.RedisConfig;
 import com.alidaodao.app.service.impl.RedisCache;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,6 +31,9 @@ public class RedisClient {
      * @param assignedDbIndexes dbIndex
      */
     public RedisClient(RedisConfig redisConfig, Set<Integer> assignedDbIndexes) {
+        if (Objects.isNull(assignedDbIndexes) || assignedDbIndexes.size() <= 0) {
+            throw new IllegalArgumentException("not allow db indexes is empty");
+        }
         map = new ConcurrentHashMap<>(assignedDbIndexes.size());
         assignedDbIndexes.stream()
                 .filter(this::checkDbIndex)

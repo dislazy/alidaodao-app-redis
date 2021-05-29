@@ -17,6 +17,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * @author Jack
+ * redis client
+ */
 @Configuration
 @EnableConfigurationProperties(RedisProperties.class)
 @ConditionalOnClass(RedisClient.class)

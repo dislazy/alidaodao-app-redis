@@ -6,3 +6,4 @@
 /spring-boot-redis-starter/target/
 *.iml
 *.idea
+/alidaodao-app-redis-example/src/main/resources/application-dev.properties

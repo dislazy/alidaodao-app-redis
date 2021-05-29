@@ -3,6 +3,10 @@ package com.alidaodao.app;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author Jack
+ * redis client
+ */
 @Configuration
 @ConfigurationProperties(prefix = "spring.redis")
 public class RedisProperties {
