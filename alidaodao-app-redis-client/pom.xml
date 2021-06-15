@@ -25,18 +25,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <jedis-version>3.6.1</jedis-version>
+        <common-lang3.version>3.12.0</common-lang3.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>3.6.0</version>
+            <version>${jedis-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${common-lang3.version}</version>
         </dependency>
     </dependencies>
 
@@ -56,7 +58,7 @@
     <developers>
         <developer>
             <name>dislazy</name>
-            <email>dislazy2019@outlook.com</email>
+            <email>songbo2021@outlook.com</email>
             <url>https://bosong.online</url>
         </developer>
     </developers>
