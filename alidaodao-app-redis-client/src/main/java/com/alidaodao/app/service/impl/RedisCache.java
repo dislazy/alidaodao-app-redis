@@ -98,7 +98,7 @@ public class RedisCache implements RedisService {
     }
 
     @Override
-    public String set(String key, String value, EXPX expx, Long exp) {
+    public String set(String key, String value, EXPX expx, long exp) {
         String ok = null;
         try (Jedis jedis = getJedis()) {
             ok = jedis.set(key, value, setParams(expx, exp));
@@ -107,7 +107,7 @@ public class RedisCache implements RedisService {
     }
 
     @Override
-    public String set(byte[] key, byte[] value, EXPX expx, Long exp) {
+    public String set(byte[] key, byte[] value, EXPX expx, long exp) {
         String ok = null;
         try (Jedis jedis = getJedis()) {
             ok = jedis.set(key, value, setParams(expx, exp));
@@ -115,11 +115,11 @@ public class RedisCache implements RedisService {
         return ok;
     }
 
-    private static SetParams setParams(EXPX expx, Long exp) {
+    private static SetParams setParams(EXPX expx, long exp) {
         SetParams setParams = new SetParams();
         setParams.nx();
         if (expx.equals(EXPX.SECONDS)) {
-            setParams.ex(exp.intValue());
+            setParams.ex(exp);
         } else if (expx.equals(EXPX.MILLISECONDS)) {
             setParams.px(exp);
         }
@@ -152,7 +152,7 @@ public class RedisCache implements RedisService {
         }
 
         if (ex) {
-            params.ex(time);
+            params.ex((long) time);
         } else {
             params.px(time);
         }
@@ -162,11 +162,17 @@ public class RedisCache implements RedisService {
     }
 
     @Override
-    public String setex(String key, int seconds, String value) {
+    public String setex(String key, long seconds, String value) {
         try (Jedis jedis = getJedis()) {
             return jedis.setex(key, seconds, value);
         }
     }
+
+    @Override
+    public String setex(String key, int seconds, String value) {
+        return setex(key,(long) seconds,value);
+    }
+
 
     @Override
     public boolean setnx(String key, String value) {
@@ -202,13 +208,18 @@ public class RedisCache implements RedisService {
 
     @Override
     public Long expire(String key, int seconds) {
+        return expire(key, (long) seconds);
+    }
+
+    @Override
+    public Long expire(String key, long seconds) {
         try (Jedis jedis = getJedis()) {
             return jedis.expire(key, seconds);
         }
     }
 
     @Override
-    public Long expireAt(String key, Long unixTime) {
+    public Long expireAt(String key, long unixTime) {
         Long ok = null;
         try (Jedis jedis = getJedis()) {
             ok = jedis.expireAt(key, unixTime);
@@ -217,7 +228,7 @@ public class RedisCache implements RedisService {
     }
 
     @Override
-    public Long expireAt(byte[] key, Long unixTime) {
+    public Long expireAt(byte[] key, long unixTime) {
         Long ok = null;
         try (Jedis jedis = getJedis()) {
             ok = jedis.expireAt(key, unixTime);
@@ -809,6 +820,7 @@ public class RedisCache implements RedisService {
         return memSet;
     }
 
+    @Override
     public Set<Tuple> zrangeByScoreWithScores(String key, long min, long max) {
         Set<Tuple> memSet = null;
         try (Jedis jedis = getJedis()) {

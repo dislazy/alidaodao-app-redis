@@ -18,9 +18,9 @@ public interface RedisService {
 
     String set(byte[] key, byte[] value);
 
-    String set(String key, String value, EXPX expx, Long exp);
+    String set(String key, String value, EXPX expx, long exp);
 
-    String set(byte[] key, byte[] value, EXPX expx, Long exp);
+    String set(byte[] key, byte[] value, EXPX expx, long exp);
 
     String set(String key, String value, Expire exp);
 
@@ -28,7 +28,10 @@ public interface RedisService {
 
     String set(String key, String value, boolean ex, int time, boolean nx);
 
+    @Deprecated
     String setex(String key, int seconds, String value);
+
+    String setex(String key, long seconds, String value);
 
     boolean setnx(String key, String value);
 
@@ -38,11 +41,14 @@ public interface RedisService {
 
     Long expire(byte[] key, Expire exp);
 
+    @Deprecated
     Long expire(String key, int seconds);
 
-    Long expireAt(String key, Long unixTime);
+    Long expire(String key, long seconds);
 
-    Long expireAt(byte[] key, Long unixTime);
+    Long expireAt(String key, long unixTime);
+
+    Long expireAt(byte[] key, long unixTime);
 
     Long ttl(String key);
 

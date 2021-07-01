@@ -15,10 +15,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class RedisClient {
 
-    //redis 多库map
+    /**
+     * 多库map
+     */
     private final Map<Integer, RedisService> map;
 
-    // 默认库索引
+    /**
+     * 默认库索引
+     */
     private int defaultIndex = -1;
 
     private boolean checkDbIndex(int index) {
