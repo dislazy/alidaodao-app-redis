@@ -10,44 +10,34 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-boot-redis-starter</artifactId>
+    <artifactId>alidaodao-app-redis</artifactId>
     <version>${revision}</version>
 
-    <name>spring-boot-redis-starter</name>
+    <name>alidaodao-app-redis</name>
     <description>redis connection tool helper</description>
     <url>https://github.com/dislazy/alidaodao-app-redis</url>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <spring-boot.version>2.5.0</spring-boot.version>
+        <jedis-version>3.6.1</jedis-version>
+        <common-lang3.version>3.12.0</common-lang3.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.alidaodao.app</groupId>
-            <artifactId>alidaodao-app-redis</artifactId>
-            <version>${revision}</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure-processor</artifactId>
-            <version>${spring-boot.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <version>${spring-boot.version}</version>
-            <optional>true</optional>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${common-lang3.version}</version>
         </dependency>
     </dependencies>
 
