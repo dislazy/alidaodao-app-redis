@@ -7,7 +7,7 @@
 
     <groupId>com.alidaodao.app</groupId>
     <artifactId>alidaodao-app-redis</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 
     <name>alidaodao-app-redis</name>
     <description>redis connection tool helper</description>
@@ -18,7 +18,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jedis-version>3.6.3</jedis-version>
+        <jedis-version>3.7.0</jedis-version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <skipTests>true</skipTests>
         <maven.deploy.skip>false</maven.deploy.skip>
