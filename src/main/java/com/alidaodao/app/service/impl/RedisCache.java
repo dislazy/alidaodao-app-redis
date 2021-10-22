@@ -131,7 +131,7 @@ public class RedisCache implements RedisService {
         if (exp == null) {
             return "not ok";
         }
-        return setex(key,exp.getTime(),value);
+        return set(key,value,exp);
     }
 
     @Override
