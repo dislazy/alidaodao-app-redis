@@ -28,9 +28,6 @@ public interface RedisService {
 
     String set(String key, String value, boolean ex, int time, boolean nx);
 
-    @Deprecated
-    String setex(String key, int seconds, String value);
-
     String setex(String key, long seconds, String value);
 
     boolean setnx(String key, String value);
@@ -40,9 +37,6 @@ public interface RedisService {
     Long expire(String key, Expire exp);
 
     Long expire(byte[] key, Expire exp);
-
-    @Deprecated
-    Long expire(String key, int seconds);
 
     Long expire(String key, long seconds);
 

@@ -131,7 +131,10 @@ public class RedisCache implements RedisService {
         if (exp == null) {
             return "not ok";
         }
-        return set(key,value,exp);
+        SetParams params = setParams(EXPX.SECONDS, exp.getTime());
+        try (Jedis jedis = getJedis()) {
+            return jedis.set(key, value, params);
+        }
     }
 
     @Override
@@ -169,12 +172,6 @@ public class RedisCache implements RedisService {
     }
 
     @Override
-    public String setex(String key, int seconds, String value) {
-        return setex(key,(long) seconds,value);
-    }
-
-
-    @Override
     public boolean setnx(String key, String value) {
         try (Jedis jedis = getJedis()) {
             return jedis.setnx(key, value) > 0L;
@@ -206,10 +203,6 @@ public class RedisCache implements RedisService {
         return ok;
     }
 
-    @Override
-    public Long expire(String key, int seconds) {
-        return expire(key, (long) seconds);
-    }
 
     @Override
     public Long expire(String key, long seconds) {
