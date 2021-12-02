@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
+	
     <groupId>com.alidaodao.app</groupId>
     <artifactId>alidaodao-app-redis</artifactId>
     <version>2.0.3</version>
@@ -49,7 +49,7 @@
         <developerConnection>scm:git:ssh:/github.com/dislazy/alidaodao-app-redis.git</developerConnection>
         <url>https://github.com/dislazy/alidaodao-app-redis/tree/master</url>
     </scm>
-    <!-- 开发者信息 -->
+    <!-- 开发者信息1 -->
     <developers>
         <developer>
             <name>dislazy</name>
