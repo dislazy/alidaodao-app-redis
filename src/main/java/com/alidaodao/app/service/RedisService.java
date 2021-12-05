@@ -11,6 +11,13 @@ import java.util.Set;
 /**
  * @author Jack
  * reids service interface
+ * common param:
+ * key : redisKey
+ * value：redisValue
+ * Expire： 秒级过期时间
+ * EXPX 选择毫秒或者秒
+ * ex 是否选择秒
+ * nx 是否可重复写入
  */
 public interface RedisService {
 
@@ -27,6 +34,7 @@ public interface RedisService {
     String set(byte[] key, byte[] value, Expire exp);
 
     String set(String key, String value, boolean ex, int time, boolean nx);
+
 
     String setex(String key, long seconds, String value);
 

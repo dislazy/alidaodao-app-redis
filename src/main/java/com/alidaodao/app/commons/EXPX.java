@@ -6,11 +6,11 @@ package com.alidaodao.app.commons;
  */
 public enum  EXPX {
     /**
-     * ex
+     * ex 秒级
      */
     SECONDS("EX"),
     /**
-     * px
+     * px 毫秒级
      */
     MILLISECONDS("PX");
 

@@ -2,7 +2,7 @@ package com.alidaodao.app;
 
 import com.alidaodao.app.service.RedisService;
 import com.alidaodao.app.config.RedisConfig;
-import com.alidaodao.app.service.impl.RedisCache;
+import com.alidaodao.app.service.impl.RedisServiceImpl;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +41,7 @@ public class RedisClient {
         map = new ConcurrentHashMap<>(assignedDbIndexes.size());
         assignedDbIndexes.stream()
                 .filter(this::checkDbIndex)
-                .forEach(i -> map.put(i, new RedisCache(i, redisConfig)));
+                .forEach(i -> map.put(i, new RedisServiceImpl(i, redisConfig)));
     }
 
     public void setDefaultIndex(int defaultIndex) {
