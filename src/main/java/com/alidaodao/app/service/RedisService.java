@@ -2,8 +2,8 @@ package com.alidaodao.app.service;
 
 import com.alidaodao.app.commons.EXPX;
 import com.alidaodao.app.commons.Expire;
-import redis.clients.jedis.ScanResult;
-import redis.clients.jedis.Tuple;
+import redis.clients.jedis.resps.ScanResult;
+import redis.clients.jedis.resps.Tuple;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -190,7 +190,7 @@ public interface RedisService {
 
     Set<Tuple> zrangeWithScores(byte[] key, long min, long max);
 
-    Set<String> zrangeByScore(String key, long min, long max);
+    List<String> zrangeByScore(String key, long min, long max);
 
     Set<Tuple> zrangeByScoreWithScores(String key, long min, long max);
 
@@ -229,6 +229,9 @@ public interface RedisService {
     List<String> hmget(String key, String... fields);
 
     Long decr(String key);
+
+
+
 
 
 }

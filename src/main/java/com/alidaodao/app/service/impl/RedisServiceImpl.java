@@ -5,14 +5,11 @@ import com.alidaodao.app.commons.EXPX;
 import com.alidaodao.app.commons.Expire;
 import com.alidaodao.app.config.RedisConfig;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.ScanResult;
-import redis.clients.jedis.Tuple;
 import redis.clients.jedis.params.SetParams;
+import redis.clients.jedis.resps.ScanResult;
+import redis.clients.jedis.resps.Tuple;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Jack
@@ -642,69 +639,117 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Set<String> zrange(String key, long min, long max) {
+        List<String> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrange(key, min, max);
+            result = jedis.zrange(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
+
 
     @Override
     public Set<byte[]> zrange(byte[] key, long min, long max) {
+        List<byte[]> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrange(key, min, max);
+            result = jedis.zrange(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
+
 
     @Override
     public Set<String> zrevrange(String key, long min, long max) {
+        List<String> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrange(key, min, max);
+            result = jedis.zrevrange(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
+
 
     @Override
     public Set<byte[]> zrevrange(byte[] key, long min, long max) {
+        List<byte[]> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrange(key, min, max);
+            result = jedis.zrevrange(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrangeWithScores(String key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrangeWithScores(key, min, max);
+            result = jedis.zrangeWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrangeWithScores(byte[] key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrangeWithScores(key, min, max);
+            result = jedis.zrangeWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrangeByScoreWithScores(String key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrangeByScoreWithScores(key, min, max);
+            result = jedis.zrangeByScoreWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<String> zrevrangebyscore(String key, double max, double min, int offset, int count) {
+        List<String> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeByScore(key, max, min, offset, count);
+            result = jedis.zrevrangeByScore(key, max, min, offset, count);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrevrangeByScoreWithScores(String key, double max, double min, int offset, int count) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeByScoreWithScores(key, max, min, offset, count);
+            result = jedis.zrevrangeByScoreWithScores(key, max, min, offset, count);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
-    public Set<String> zrangeByScore(String key, long min, long max) {
+    public List<String> zrangeByScore(String key, long min, long max) {
         try (Jedis jedis = getJedis()) {
             return jedis.zrangeByScore(key, min, max);
         }
@@ -712,37 +757,62 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public Set<Tuple> zrangeByScoreWithScores(byte[] key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrangeByScoreWithScores(key, min, max);
+            result = jedis.zrangeByScoreWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrevrangeWithScores(String key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeWithScores(key, min, max);
+            result = jedis.zrevrangeWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrevrangeWithScores(byte[] key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeWithScores(key, min, max);
+            result = jedis.zrevrangeWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrevrangeByScoreWithScores(String key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeByScoreWithScores(key, min, max);
+            result = jedis.zrevrangeByScoreWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
     public Set<Tuple> zrevrangeByScoreWithScores(byte[] key, long min, long max) {
+        List<Tuple> result = null;
         try (Jedis jedis = getJedis()) {
-            return jedis.zrevrangeByScoreWithScores(key, min, max);
+            result = jedis.zrevrangeByScoreWithScores(key, min, max);
         }
+        if (Objects.nonNull(result) && result.size() > 0) {
+            return new HashSet<>(result);
+        }
+        return null;
     }
 
     @Override
@@ -823,5 +893,7 @@ public class RedisServiceImpl implements RedisService {
             return jedis.decr(key);
         }
     }
+
+
 
 }
