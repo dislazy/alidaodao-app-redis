@@ -29,7 +29,7 @@ public class RedisClientTest {
     private static RedisClient getRedisClient(){
         RedisConfig redisConfig = new RedisConfig();
         redisConfig.setRedisHost("127.0.0.1");
-        redisConfig.setRedisPort(6379);
+        redisConfig.setRedisPort(6380);
         redisConfig.setRedisPwd("");
         //此处为需要创建的redis db实例
         Set<Integer> redisIndexes = new HashSet<>();

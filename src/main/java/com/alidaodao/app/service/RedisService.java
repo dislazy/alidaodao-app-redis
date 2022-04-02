@@ -21,12 +21,44 @@ import java.util.Set;
  */
 public interface RedisService {
 
+    /**
+     * set key:String value:String
+     *
+     * @param key key
+     * @param value value
+     * @return
+     */
     String set(String key, String value);
 
+    /**
+     * set key:byte[] value:byte[]
+     *
+     * @param key
+     * @param value
+     * @return
+     */
     String set(byte[] key, byte[] value);
 
+    /**
+     * set key:String value:String
+     *
+     * @param key
+     * @param value
+     * @param expx  seconds or milliseconds
+     * @param exp expire time
+     * @return
+     */
     String set(String key, String value, EXPX expx, long exp);
 
+    /**
+     * set key:byte[] value:byte[]
+     *
+     * @param key
+     * @param value
+     * @param expx
+     * @param exp
+     * @return
+     */
     String set(byte[] key, byte[] value, EXPX expx, long exp);
 
     String set(String key, String value, Expire exp);
@@ -35,23 +67,69 @@ public interface RedisService {
 
     String set(String key, String value, boolean ex, int time, boolean nx);
 
-
+    /**
+     * set newValue replace oldValue and add expire time
+     *
+     * @param key
+     * @param seconds
+     * @param value
+     * @return
+     */
     String setex(String key, long seconds, String value);
 
+    /**
+     * set newValue not replace oldValue
+     *
+     * @param key
+     * @param value
+     * @return
+     */
     boolean setnx(String key, String value);
 
+    /**
+     * check key exists
+     *
+     * @param key
+     * @return
+     */
     boolean exists(String key);
 
+    /**
+     * set expire time
+     *
+     * @param key
+     * @param exp
+     * @return
+     */
     Long expire(String key, Expire exp);
 
     Long expire(byte[] key, Expire exp);
 
+    /**
+     * set expire for seconds
+     *
+     * @param key
+     * @param seconds
+     * @return
+     */
     Long expire(String key, long seconds);
 
+    /**
+     * set expire to unixTime,see: https://en.wikipedia.org/wiki/Unix_time
+     * @param key
+     * @param unixTime
+     * @return
+     */
     Long expireAt(String key, long unixTime);
 
     Long expireAt(byte[] key, long unixTime);
 
+    /**
+     * select left time for key
+     *
+     * @param key
+     * @return
+     */
     Long ttl(String key);
 
     String get(String key);
@@ -65,6 +143,10 @@ public interface RedisService {
     Long incr(String key);
 
     Long incrby(String key, long increment);
+
+    Long decr(String key);
+
+    Long decrBy(String key,long decrement);
 
     ScanResult<String> scan(String cursor);
 
@@ -227,11 +309,5 @@ public interface RedisService {
     String hmset(String key, Map<String, String> hash);
 
     List<String> hmget(String key, String... fields);
-
-    Long decr(String key);
-
-
-
-
 
 }

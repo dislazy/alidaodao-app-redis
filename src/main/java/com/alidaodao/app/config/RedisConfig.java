@@ -149,7 +149,7 @@ public class RedisConfig {
         config.setMaxIdle(getMaxIdle());
         config.setMinIdle(getMinIdle());
         config.setBlockWhenExhausted(isBlockWhenExhausted());
-        config.setMaxWaitMillis(getMaxWaitMillis());
+        config.setMaxWait(Duration.ofMillis(getMaxWaitMillis()));
         config.setTestOnBorrow(isTestOnBorrow());
         config.setTestOnReturn(isTestOnReturn());
         config.setTestOnCreate(isTestOnCreate());

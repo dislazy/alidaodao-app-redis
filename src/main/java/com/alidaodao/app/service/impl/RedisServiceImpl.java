@@ -894,6 +894,12 @@ public class RedisServiceImpl implements RedisService {
         }
     }
 
+    @Override
+    public Long decrBy(String key, long decrement) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.decrBy(key,decrement);
+        }
+    }
 
 
 }
