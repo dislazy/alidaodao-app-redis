@@ -13,6 +13,12 @@ alidaodao-app-redis是一款基于JedisPool的动态多redisDB获取实例，执
   <artifactId>alidaodao-app-redis</artifactId>
   <version>{maven仓库中最新版本即可}</version>
 </dependency>
+#如果不生效可以引用以下的包
+<dependency>
+    <groupId>org.apache.commons</groupId>
+	<artifactId>commons-pool2</artifactId>
+	<version>2.11.1</version>
+</dependency>
 ```
 
 ### 初始化对象
