@@ -18,7 +18,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jedis-version>4.2.3</jedis-version>
+        <jedis-version>4.3.1</jedis-version>
         <common-lang3.version>3.12.0</common-lang3.version>
         <skipTests>true</skipTests>
         <maven.deploy.skip>false</maven.deploy.skip>
@@ -53,8 +53,8 @@
     <developers>
         <developer>
             <name>dislazy</name>
-            <email>songbo2021@outlook.com</email>
-            <url>https://bosong.online</url>
+            <email>songbo2099@gmail.com</email>
+            <url>https://www.songbo.fun</url>
         </developer>
     </developers>
 
