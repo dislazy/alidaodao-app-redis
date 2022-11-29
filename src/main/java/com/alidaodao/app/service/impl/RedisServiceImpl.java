@@ -5,8 +5,12 @@ import com.alidaodao.app.commons.EXPX;
 import com.alidaodao.app.commons.Expire;
 import com.alidaodao.app.config.RedisConfig;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.StreamEntryID;
 import redis.clients.jedis.params.SetParams;
+import redis.clients.jedis.params.XReadGroupParams;
+import redis.clients.jedis.params.XReadParams;
 import redis.clients.jedis.resps.ScanResult;
+import redis.clients.jedis.resps.StreamEntry;
 import redis.clients.jedis.resps.Tuple;
 import java.util.*;
 
@@ -883,6 +887,118 @@ public class RedisServiceImpl implements RedisService {
     public List<String> hmget(String key, String... fields) {
         try (Jedis jedis = getJedis()) {
             return jedis.hmget(key, fields);
+        }
+    }
+
+    /**
+     * stream add
+     *
+     * @param key
+     * @param streamEntryID
+     * @param content
+     * @return
+     */
+    @Override
+    public StreamEntryID xadd(String key, StreamEntryID streamEntryID, Map<String, String> content) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xadd(key, streamEntryID, content);
+        }
+    }
+
+    /**
+     * get stream value for asc
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @param count
+     * @return
+     */
+    @Override
+    public List<StreamEntry> xrange(String key, StreamEntryID start, StreamEntryID end, int count) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xrange(key,start,end,count);
+        }
+    }
+
+    /**
+     * get stream value for desc
+     *
+     * @param key
+     * @param end
+     * @param start
+     * @param count
+     * @return
+     */
+    @Override
+    public List<StreamEntry> xrevrange(String key, StreamEntryID start, StreamEntryID end, int count) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xrange(key,end,start,count);
+        }
+    }
+
+    /**
+     * create group stream
+     *
+     * @param stream
+     * @param group
+     * @param makeStream need create stream ?
+     * @return
+     */
+    @Override
+    public String xgroupCreate(String stream, String group, Boolean makeStream) {
+        return xgroupCreate(stream, group, null, makeStream);
+    }
+
+    /**
+     * create group stream
+     *
+     * @param stream
+     * @param group
+     * @param id
+     * @param makeStream
+     * @return
+     */
+    @Override
+    public String xgroupCreate(String stream, String group, StreamEntryID id, Boolean makeStream) {
+        try (Jedis jedis = getJedis()) {
+            return jedis.xgroupCreate(stream, group, id, makeStream);
+        }
+    }
+
+    /**
+     * read group stream
+     *
+     * @param group
+     * @param consumer
+     * @param count
+     * @param streams
+     * @return
+     */
+    @Override
+    public List<Map.Entry<String, List<StreamEntry>>> xreadGroup(String group, String consumer, int count, Map<String, StreamEntryID> streams) {
+        try (Jedis jedis = getJedis()) {
+            XReadGroupParams p = new XReadGroupParams();
+            p.count(count);
+            p.block(0);
+            return jedis.xreadGroup(group, consumer, p, streams);
+        }
+    }
+
+    /**
+     * read group stream
+     *
+     * @param count
+     * @param streams
+     * @return
+     */
+    @Override
+    public List<Map.Entry<String, List<StreamEntry>>> xread(int count, Map<String, StreamEntryID> streams) {
+        try (Jedis jedis = getJedis()) {
+            XReadParams p = new XReadParams();
+            p.count(count);
+            p.block(0);
+            return jedis.xread(p, streams);
         }
     }
 

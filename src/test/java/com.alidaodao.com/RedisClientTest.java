@@ -24,6 +24,7 @@ public class RedisClientTest {
         String set1 = cache.set("111213".getBytes(StandardCharsets.UTF_8), "dfff".getBytes(StandardCharsets.UTF_8), new Expire(100));
         String setex = cache.setex("111213", 100, "12999");
         System.out.println(setex);
+        //TODO need add stream test
     }
 
     private static RedisClient getRedisClient(){

@@ -2,7 +2,9 @@ package com.alidaodao.app.service;
 
 import com.alidaodao.app.commons.EXPX;
 import com.alidaodao.app.commons.Expire;
+import redis.clients.jedis.StreamEntryID;
 import redis.clients.jedis.resps.ScanResult;
+import redis.clients.jedis.resps.StreamEntry;
 import redis.clients.jedis.resps.Tuple;
 import java.util.List;
 import java.util.Map;
@@ -309,5 +311,78 @@ public interface RedisService {
     String hmset(String key, Map<String, String> hash);
 
     List<String> hmget(String key, String... fields);
+
+    /**
+     * stream add
+     * @param key
+     * @param streamEntryID
+     * @param content
+     * @return
+     */
+    StreamEntryID xadd(String key, StreamEntryID streamEntryID, Map<String, String> content);
+
+
+    /**
+     * get stream value for asc
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @param count
+     * @return
+     */
+    List<StreamEntry> xrange(String key, StreamEntryID start, StreamEntryID end, int count);
+
+    /**
+     * get stream value for desc
+     *
+     * @param key
+     * @param end
+     * @param start
+     * @param count
+     * @return
+     */
+    List<StreamEntry> xrevrange(String key, StreamEntryID start, StreamEntryID end, int count);
+
+    /**
+     * create group stream
+     *
+     * @param stream
+     * @param group
+     * @param makeStream
+     * @return
+     */
+    String xgroupCreate(String stream, String group, Boolean makeStream);
+
+    /**
+     * create group stream
+     *
+     * @param stream
+     * @param group
+     * @param id
+     * @param makeStream
+     * @return
+     */
+    String xgroupCreate(String stream, String group,StreamEntryID id, Boolean makeStream);
+
+    /**
+     * read group stream
+     *
+     * @param group
+     * @param consumer
+     * @param count
+     * @param streams
+     * @return
+     */
+    List<Map.Entry<String, List<StreamEntry>>> xreadGroup(String group, String consumer, int count, Map<String, StreamEntryID> streams);
+
+    /**
+     * read group stream
+     *
+     * @param count
+     * @param streams
+     * @return
+     */
+    List<Map.Entry<String, List<StreamEntry>>> xread(int count, Map<String, StreamEntryID> streams);
 
 }
